@@ -1,14 +1,9 @@
 n = int(input())
 for i in range(1, n):
-    for _ in range(n - i):
-        print(" ", end="")
-    for _ in range(2 * i - 1):
-        print("*", end="")
-    print()
+    space = " " * (n - i)
+    star = "*" * (2 * i - 1)
+    print(space, star, sep="")
 for i in range(n):
-    for _ in range(i):
-        print(" ", end="")
-    for _ in range(2 * (n - i) - 1):
-        print("*", end="")
-    print()
-    
+    space = " " * i
+    star = "*" * (2 * (n - i) - 1)
+    print(space, star, sep="")
