@@ -1,33 +1,30 @@
 #include <stdio.h>
+#define MAX 100
 
-void swap(int *a, int *b);
+void reverse(int arr[], int start, int end);
 int main(void)
 {
     int n, m, a, b;
-    int arr[100];
+    int arr[MAX];
     scanf("%d %d", &n, &m);
-    for (int i = 0; i < n; i++) arr[i] = i + 1;    
+    for (int i = 0; i < n; i++) arr[i] = i + 1;
     for (int i = 0; i < m; i++)
     {
         scanf("%d %d", &a, &b);
-        for (int j = 0; j < (b - a + 1) / 2; j++)
-        {
-            swap(&arr[a - 1 + j], &arr[b - 1 - j]);
-            // 1 1 -> 0 -> 0 (1)
-            // 1 2 -> 1 -> 1 
-            // 1 3 -> 2 -> 1 (1)
-            // 1 4 -> 3 -> 2
-            // 1 5 -> 4 -> 2 (1)
-        }       
+        reverse(arr, a - 1, b - 1);       
     }
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
     return 0;
 }
 
-void swap(int *a, int *b)
+void reverse(int arr[], int start, int end)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+    while (start < end)
+    {
+        int tmp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = tmp;
+        start++; end--;
+    }
 }
+
